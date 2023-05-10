@@ -170,6 +170,7 @@ outputs/
 
 trainpop/
 
+
 !overcooked_ai/
 overcooked_ai/*
 !overcooked_ai/src/
