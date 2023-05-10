@@ -1,0 +1,13 @@
+name : forced_coordination
+lr: 8e-4
+anneal_lr_fraction: 2.0
+z_dim: 5
+observation_shape: [26, 5, 5]
+
+rshaped_horizon: 0
+soup_reward: False
+soup_reward_decay: False
+ingred_reward: False
+ingred_reward_decay: False
+
+sp_timesteps: 7.5e6
