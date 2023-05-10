@@ -170,14 +170,13 @@ outputs/
 
 trainpop/
 
-
-# !overcooked_ai/
-# overcooked_ai/*
-# !overcooked_ai/src/
-# overcooked_ai/src/*
-# !overcooked_ai/src/overcooked_ai_py/
-# overcooked_ai/src/overcooked_ai_py/*
-# !overcooked_ai/src/overcooked_ai_py/mdp/
-# overcooked_ai/src/overcooked_ai_py/mdp/*
-# !overcooked_ai/src/overcooked_ai_py/mdp/overcooked_env.py
-# !overcooked_ai/src/overcooked_ai_py/mdp/overcooked_mdp.py
+!overcooked_ai/
+overcooked_ai/*
+!overcooked_ai/src/
+overcooked_ai/src/*
+!overcooked_ai/src/overcooked_ai_py/
+overcooked_ai/src/overcooked_ai_py/*
+!overcooked_ai/src/overcooked_ai_py/mdp/
+overcooked_ai/src/overcooked_ai_py/mdp/*
+!overcooked_ai/src/overcooked_ai_py/mdp/overcooked_env.py
+!overcooked_ai/src/overcooked_ai_py/mdp/overcooked_mdp.py
