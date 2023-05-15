@@ -3,12 +3,12 @@ This repository contains code for the IJCAI 2023 paper "A Hierarchical Approach 
 
 
 ### Installation
-Create a new environment.
+* Create a new environment.
 ```
 conda create -n hipt python=3.10
 conda activate hipt
 ```
-Setup Overcooked AI environement. This repo uses an older commit of the [Overcooked AI](https://github.com/HumanCompatibleAI/overcooked_ai) repo. Make sure you are pulling from the correct version
+* Setup Overcooked AI environement. This repo uses an older commit of the [Overcooked AI](https://github.com/HumanCompatibleAI/overcooked_ai) repo. Make sure you are pulling from the correct version. 
 
 ```
 git clone https://github.com/HumanCompatibleAI/overcooked_ai.git
@@ -16,9 +16,10 @@ cd overcooked_ai
 git checkout 16f9428d99d9002be6611f3bab48f1bfe5c74c32
 
 ```
+* Merge files from the existing  ```overcooked_ai``` (replacing ```overcooked-env.py``` and ```overcooked_mdp.py```) folder into the Overcooked AI repo.
 
 
-Install dependencies.
+* Install dependencies.
 ```
 ./install.sh
 ```
