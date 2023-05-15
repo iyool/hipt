@@ -16,7 +16,7 @@ cd overcooked_ai
 git checkout 16f9428d99d9002be6611f3bab48f1bfe5c74c32
 
 ```
-* Merge files from the existing  ```overcooked_ai``` (replacing ```overcooked-env.py``` and ```overcooked_mdp.py```) folder into the Overcooked AI repo.
+* Merge files from the existing  ```overcooked_ai``` (replacing ```mdp/overcooked-env.py``` and ```mdp/overcooked_mdp.py```) folder into the Overcooked AI repo.
 
 
 * Install dependencies.
@@ -25,6 +25,8 @@ git checkout 16f9428d99d9002be6611f3bab48f1bfe5c74c32
 ```
 
 ### Training
+
+* Note: This project uses Weights and Biases for logging. To enable logging, create a free account at [Weights and Biases](https://wandb.ai/). Then run ```wandb login``` and enter your API key. If you would like to disable tracking, set ```track=False``` .
 
 To train a population of Self-Play Agents run the following command:
 ```
@@ -41,6 +43,7 @@ where ```layout_name``` is the name of the layout to train on and ```path_to_sp_
 
 To enable evaluation after training an agent/agent population simply set ```eval=True``` at the end of the training command. For example:
 ```
-python main.py model=population eval=True
-python main.py model={hipt/fcp} layout={layout_name} layout.partner_pop_path={path_to_sp_population} eval=True
+python main.py model=population eval=True #Plots the crossplay heatmap matrix
+
+python main.py model={hipt/fcp} layout={layout_name} layout.partner_pop_path={path_to_sp_population} eval=True #Evaulates the HiPT/FCP agent on a SP Population and generates gifs of the gameplay.
 ```
