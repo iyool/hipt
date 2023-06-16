@@ -1,5 +1,5 @@
 # A Hierarchical Approach to Population Training for Human-AI Collaboration
-This repository contains code for the IJCAI 2023 paper "A Hierarchical Approach to Population Training for Human-AI Collaboration" [Link]
+This repository contains code for the IJCAI 2023 paper [A Hierarchical Approach to Population Training for Human-AI Collaboration](https://arxiv.org/pdf/2305.16708.pdf)
 
 
 ### Installation
@@ -46,4 +46,16 @@ To enable evaluation after training an agent/agent population simply set ```eval
 python main.py model=population eval=True #Plots the crossplay heatmap matrix
 
 python main.py model={hipt/fcp} layout={layout_name} layout.partner_pop_path={path_to_sp_population} eval=True #Evaulates the HiPT/FCP agent on a SP Population and generates gifs of the gameplay.
+```
+
+### Citation
+
+```
+@article{loo2023hierarchical,
+  title={A Hierarchical Approach to Population Training for Human-AI Collaboration},
+  author={Loo, Yi and Gong, Chen and Meghjani, Malika},
+  journal={arXiv preprint arXiv:2305.16708},
+  year={2023}
+}
+
 ```
