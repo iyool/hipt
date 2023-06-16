@@ -14,7 +14,6 @@ conda activate hipt
 git clone https://github.com/HumanCompatibleAI/overcooked_ai.git
 cd overcooked_ai
 git checkout 16f9428d99d9002be6611f3bab48f1bfe5c74c32
-
 ```
 * Merge files from the existing  ```overcooked_ai``` (replacing ```mdp/overcooked-env.py``` and ```mdp/overcooked_mdp.py```) folder into the Overcooked AI repo.
 
