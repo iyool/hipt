@@ -93,6 +93,7 @@ class SPPopulationTrainer:
 
                         agent_loss = pg_loss - self.config.training.ent_coef_lo * entropy_loss + v_loss * self.config.training.value_coef
                         loss += agent_loss
+                        avg_entropy += entropy
                         avg_policy += policy
 
                         self.optimizers[agent_ind].zero_grad()
@@ -143,7 +144,7 @@ class SPPopulationTrainer:
                     self.save(f"agent{agent_ind}_best", os.getcwd(),agent_ind,save_model_state = True)
 
             if self.global_step >= last_save:
-                last_save += self.config.training.save_interval
+                last_save += self.config.logging.save_interval
                 for agent_ind, agent in enumerate(self.agent_pop):
                     self.save(f"agent{agent_ind}_step{self.global_step}", os.getcwd(), agent_ind, save_model_state = True)
         
