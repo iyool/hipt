@@ -29,7 +29,7 @@ git checkout 16f9428d99d9002be6611f3bab48f1bfe5c74c32
 
 To train a population of Self-Play Agents run the following command:
 ```
-python main.py model=population
+python main.py model=population layout={layout_name}
 ```
 
 To train a HiPT/FCP agent with an existing SP Population run the following command:
