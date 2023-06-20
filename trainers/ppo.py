@@ -20,6 +20,7 @@ def compute_ppo_loss(newlogprob, mblogprob, mb_advantages, newvalue, mb_values, 
     pg_loss2 = -mb_advantages * torch.clamp(ratio, 1 - config.training.clip_coef, 1 + config.training.clip_coef)
     pg_loss = torch.max(pg_loss1, pg_loss2).mean()
 
+    newvalue = newvalue.view(-1)
     if config.training.clip_vloss:
         v_loss_unclipped = (newvalue - mb_returns) ** 2
         v_clipped =  mb_values + torch.clamp(
