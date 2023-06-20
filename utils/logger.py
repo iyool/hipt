@@ -40,6 +40,8 @@ class Logger:
 
             self.writer.add_scalar("losses/approx_kl_z", log_dict["approx_kl_z"], log_dict["global_step"])
             self.writer.add_scalar("losses/clipfrac_z", np.mean(log_dict["clipfracs_z"]), log_dict["global_step"])
+            self.writer.add_scalar("losses/explained_variance_z", log_dict["explained_var_z"], log_dict["global_step"])
+            self.writer.add_scalar("losses/explained_variance", log_dict["explained_var"], log_dict["global_step"])
         
         elif self.config.model.name == "fcp":
             self.writer.add_scalar("losses/value_loss", log_dict["v_loss"], log_dict["global_step"])
