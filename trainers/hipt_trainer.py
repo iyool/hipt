@@ -121,7 +121,7 @@ class HiPTTrainer:
                         newlogprob_z, 
                         mb_logprobs_z,
                         mb_advantages_z,
-                        newvalue,
+                        newvalue_z,
                         mb_values_z,
                         mb_returns_z,
                         self.config
@@ -145,6 +145,17 @@ class HiPTTrainer:
                     if approx_kl > self.config.training.target_kl:
                         break
 
+            y_pred, y_true = lo_traj["values"].cpu().numpy(), lo_traj["returns"].cpu().numpy()
+            var_y = np.var(y_true)
+            explained_var = np.nan if var_y == 0 else 1 - np.var(y_true - y_pred) / var_y
+
+            b_returns_z = torch.cat([hi_trajs[ind]["z_ret"] for ind in range(self.config.training.num_envs)],-1)
+            b_values_z = torch.cat([hi_trajs[ind]["z_values"] for ind in range(self.config.training.num_envs)],-1)
+
+            y_pred_z, y_true_z = b_values_z.cpu().numpy(), b_returns_z.cpu().numpy()
+            var_y_z = np.var(y_true_z)
+            explained_var_z = np.nan if var_y_z == 0 else 1 - np.var(y_true_z - y_pred_z) / var_y_z
+
             log_dict = {
                 "hi_traj" : hi_trajs,
                 "lo_traj" : lo_trajs,
@@ -160,6 +171,8 @@ class HiPTTrainer:
                 "hi_v_loss" : hi_v_loss.item(),
                 "lo_entropy_loss" : lo_entropy_loss.item(),
                 "hi_entropy_loss" : hi_entropy_loss.item(),
+                "explained_var" : explained_var,
+                "explained_var_z" : explained_var_z,
                 "lr" : lrnow,
                 "global_step" : self.global_step,
                 "start_time" : start_time,
