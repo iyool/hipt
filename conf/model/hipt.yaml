@@ -8,4 +8,4 @@ agent:
 partner :
   _target_: modules.agents.CNNAgent
 
-total_timesteps: 1e9
+total_timesteps: 1e8
