@@ -61,7 +61,7 @@ class SPRunner:
                 with torch.no_grad():
                     actions, logprobs, _, values, __ = agent_pop[agent_ind].get_action_and_value(torch.cat((next_obs_p0, next_obs_p1), dim= 0))
                     episode_dict["p0"]["values"][agent_ind,step] = values[:self.config.training.num_envs].flatten()
-                    episode_dict["p0"]["values"][agent_ind,step] = values[self.config.training.num_envs:].flatten()
+                    episode_dict["p1"]["values"][agent_ind,step] = values[self.config.training.num_envs:].flatten()
 
                 episode_dict["p0"]["actions"][agent_ind,step] = actions[:self.config.training.num_envs]
                 episode_dict["p1"]["actions"][agent_ind,step] = actions[self.config.training.num_envs:]
