@@ -67,7 +67,7 @@ class FCPTrainer:
             trajs = self.prepare_batch(trajs)
             envsperbatch =  self.config.training.num_envs // self.config.training.num_minibatches
             envinds = np.arange(self.config.training.num_envs)
-            flatinds = np.arange(self.config.training.batch_size).reshape(self.config.training.num_envs, self.config.training.rollout_steps)
+            flatinds = np.arange(self.config.training.batch_size).reshape(self.config.training.rollout_steps, self.config.training.num_envs)
             b_inds = np.arange(self.config.training.batch_size)
 
             for epoch in range(self.config.training.update_epochs):
@@ -75,7 +75,7 @@ class FCPTrainer:
                 for start in range(0, self.config.training.num_envs, envsperbatch):
                     end = start + envsperbatch
                     mbenvinds = envinds[start:end]
-                    mb_inds = flatinds[mbenvinds,:].ravel()
+                    mb_inds = flatinds[:,mbenvinds].ravel()
 
                     _, newlogprob, entropy, newvalue, __ = self.agent.get_action_and_value(
                         trajs["obs"][mb_inds],
